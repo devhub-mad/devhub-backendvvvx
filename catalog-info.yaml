@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: orders
+  annotations:
+    argocd/app-name: orders
+    backstage.io/kubernetes-id: orders
+    backstage.io/kubernetes-namespace: devhub-test
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: devhub-mad/devhub-backendvvvx
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - java
+    - quarkus
+    - maven
+    - workshop
+  links:
+    - url: https://console-openshift-console/dev-pipelines/ns/devhub-test/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console/k8s/ns/devhub-test/deployments/
+      title: Deployment
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/varodrig"
+  system: workshop-system-devhub-test
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-devhub-test
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rhdh
+spec:
+  owner: "user:default/varodrig"
+---
